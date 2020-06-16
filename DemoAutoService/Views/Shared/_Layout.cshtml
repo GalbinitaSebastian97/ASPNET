@@ -1,0 +1,91 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - DemoAutoService</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg py-3 navbar-dark bg-dark shadow-sm">
+            <div class="container">
+                <a href="#" class="navbar-brand">
+
+                    <img src="https://res.cloudinary.com/mhmd/image/upload/v1557368579/logo_iqjuay.png" width="45" alt="" class="d-inline-block align-middle mr-2">
+
+                    <span class="text-uppercase font-weight-bold">DemoAutoService</span>
+                </a>
+
+                <button type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"><span class="navbar-toggler-icon"></span></button>
+
+                <div id="navbarSupportedContent" class="collapse navbar-collapse">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item active"><a asp-controller="Home" asp-action="Index" class="nav-link">Home <span class="sr-only">(current)</span></a></li>
+                        <li class="nav-item"><a href="#" class="nav-link">Records</a></li>
+                        <li class="nav-item"><a asp-controller="Employees" asp-action="Employees" class="nav-link">Employees</a></li>
+
+                        <li class="nav-item"><a asp-controller="ContactClient" asp-action="ContactClient" class="nav-link">Contact Client </a></li>
+                        <li class="nav-item"><a asp-controller="ContactClient" asp-action="ContactClient" class="nav-link">Login </a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+    <footer class="border-top footer bg-dark shadow-sm  py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-md">
+                    <img src="https://res.cloudinary.com/mhmd/image/upload/v1557368579/logo_iqjuay.png" width="45" alt="" class="d-inline-block align-middle mr-2">
+                    <small class="d-block mb-3 text-muted">&copy; 2019-2020</small>
+                </div>
+                <div class="col-6 col-md">
+                    <h5>Get Help</h5>
+                    <ul class="list-unstyled text-small">
+                        <li><a class="text-muted">Warranty</a></li>
+                        <li><a class="text-muted">Tips & Advice</a></li>
+                        <li><a class="text-muted">Get Directions</a></li>
+                        <li><a class="text-muted">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="col-6 col-md">
+                    <h5>Our Services</h5>
+                    <ul class="list-unstyled text-small">
+                        <li><a class="text-muted">Auto repairs & Auto service</a></li>
+                        <li ><a class="text-muted">Auto maintaince</a></li>
+                        <li><a class="text-muted" >F.A.Q</a></li>
+                    </ul>
+                </div>
+                <div class="col-6 col-md">
+                    <h5>Hours</h5>
+                    <ul class="list-unstyled text-small">
+                        <li><a class="text-muted">Monday &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 8:00 am - 6:00 pm</a></li>
+                        <li><a class="text-muted">Tuesday &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  8:00 am - 6:00 pm</a></li>
+                        <li><a class="text-muted">Wednesday &nbsp;&nbsp;&nbsp;&nbsp;8:00 am - 6:00 pm</a></li>
+                        <li><a class="text-muted">Thursday&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  8:00 am - 6:00 pm</a></li>
+                        <li><a class="text-muted">Friday &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   8:00 am - 6:00 pm</a></li>
+                        <li><a class="text-muted">Saturday  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Closed</a></li>
+                        <li><a class="text-muted">Sunday &nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Closed </a></li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+        <div class="container text-center">
+            <p class="text-muted credit">&copy; 2020 Giniga Gabriel Andrei & Galbinita Sebastian</p>
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
