@@ -137,7 +137,7 @@ namespace DatabaseClassLibrary.EmployeesDatabase
 
                         while (rdr.Read())
                         {
-                            Console.WriteLine($"{rdr.GetInt32(0)} {rdr.GetString(1)} {rdr.GetString(2)} {rdr.GetString(3)}");
+                          
 
 
                             FinalList.Add(new EmployeeModel(rdr.GetInt32(0), rdr.GetString(1), rdr.GetString(2), rdr.GetString(3), rdr.GetString(4)));

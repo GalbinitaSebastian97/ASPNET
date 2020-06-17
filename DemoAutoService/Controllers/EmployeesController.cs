@@ -21,12 +21,19 @@ namespace DemoAutoService.Controllers
             return View();
         }
 
-        public IActionResult Employees()
+        public IActionResult Employees(List<IEmployeeModel> model)
         {
-            list = AbstractizationFactory.ReturningEmployeesList();
 
-            return View(list);
+            if (model.Count == 0)
+            {
+                list = AbstractizationFactory.ReturningEmployeesList();
+
+                return View(list);
+            }
+            else return View(model);
         }
+
+      
 
 
         public IActionResult AddNewEmployeeSubmitButton(string FullNameInput, string BirthDayInput, string QualificationInput, string FirstDayInput)
@@ -89,16 +96,55 @@ namespace DemoAutoService.Controllers
             {
 
                 IEmployeeModel Dummy = AbstractizationFactory.CreateEmployeeInstance(ID, FullName, BirthDay, Qualification, FirstDay);
-                Console.WriteLine(Dummy.ID.ToString()+"->"+ Dummy.FullName + "  " + Dummy.BirthDay);
+                Console.WriteLine(Dummy.ID.ToString() + "->" + Dummy.FullName + "  " + Dummy.BirthDay);
                 EmployeesCRUDOperations.UpdateEmployeeInDatabase(Dummy);
 
-               
+
                 return RedirectToAction("Employees");
 
 
             }
             catch (Exception ex)
             { Console.WriteLine(ex); return RedirectToAction("Error"); }
+
+
+
+
+
+        }
+
+    
+        public  IActionResult SearchBarMethod(string SearchBarEmployee)
+        {
+
+
+            try
+            {
+
+                list = AbstractizationFactory.ReturningEmployeesList();
+
+                List<IEmployeeModel> SearchList = new List<IEmployeeModel>();
+
+                foreach (DatabaseClassLibrary.EmployeesDatabase.IEmployeeModel individ in list)
+                {
+                    if (individ.FullName.Contains(SearchBarEmployee))
+                    {
+                        SearchList.Add(individ);
+                        Console.WriteLine(individ.FullName);
+                        Console.WriteLine(SearchList.Count().ToString());
+                    }
+                }
+
+                    
+
+                return View("Employees", SearchList);
+            }
+            catch(Exception ex)
+            {
+                return View(list);
+            }
+
+
 
 
 

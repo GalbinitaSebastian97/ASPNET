@@ -5,115 +5,191 @@
     ViewData["Title"] = "Employees List";
 }
 
-@*
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="~/css/StyleSheet.css" />
-    <link rel="stylesheet" href="~/searchBar.css" />
-    *@
 <body>
     <div class="container">
-        
-            <br /><br />
-                  <div class="row" >
-                      <div class="col-6 col-md" >
-                          <div class="form-group" >
-                              <h2>Manage <b>Employees</b></h2>
-                          </div>
-                          <input class="form-control" type="text" placeholder="Search" aria-label="Search">
-                          <br />
-                      </div>
+
+        <br /><br />
+        <div class="row">
+            <div class="col-6 col-md">
+                <div class="form-group">
+                    <h2>Manage <b>Employees</b></h2>
+                </div>
+                <form asp-action="SearchBarMethod">
 
 
-                      <div class="col-6 col-md" >
-                          <br /><br />
-                          <div class="form-group" style="position:relative;">
-                              <a href="#addEmployeeModal" class="btn btn-primary" style="float:right; " data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New Employee</span></a>
-                          </div>
 
-                      </div>
+                    <input id="SearchBarEmployee" name="SearchBarEmployee" placeholder="Search by Name" class="form-control" type="text" aria-label="Search" required>
 
 
-                      </div>
-                      <table class="table table-striped table-hover">
-                          <thead>
-                              <tr>
-                                  <th>ID</th>
-                                  <th>Full Name</th>
 
-                                  <th>Birth Day</th>
-                                  <th>Qualification</th>
-                                  <th>First Day</th>
-                                  <th>  </th>
-
-                              </tr>
-                          </thead>
-                          <tbody>
-
-                              @*
-                <tr>
-                    <td>
-                        <span class="custom-checkbox">
-                            <input type="checkbox" id="checkbox1" name="options[]" value="1">
-                            <label for="checkbox1"></label>
-                        </span>
-                    </td>
-                    <td>Thomas Hardy</td>
-                    <td>thomashardy@mail.com</td>
-                    <td>89 Chiaroscuro Rd, Portland, USA</td>
-                    <td>(171) 555-2222</td>
-                    <td>
-                        <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                        <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-
-                                                    <a asp-action="EditEmployee" asp-route-id="@individ.ID"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                                                    <a @Html.ActionLink("Delete", "Delete", new { id = individ.ID }) class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-                    </td>
-                </tr>*@
-
-                              @foreach (DatabaseClassLibrary.EmployeesDatabase.IEmployeeModel individ in Model)
-                              {
-                                  <tr>
-                                      <td>
-                                          @Html.DisplayFor(Model => individ.ID)
-                                      </td>
-                                      <td>
-                                          @Html.DisplayFor(Model => individ.FullName)
-                                      </td>
-                                      <td>
-                                          @Html.DisplayFor(Model => individ.BirthDay)
-                                      </td>
-                                      <td>
-                                          @Html.DisplayFor(Model => individ.Qualification)
-                                      </td>
-                                      <th>
-                                          @Html.DisplayFor(Model => individ.FirstDay)
-                                      </th>
-                                      <td>
-
-                                          <a asp-action="EditEmployeeButton" title="Edit" asp-route-id="@individ.ID" class="btn btn-primary">Edit </a>
-                                          <a class="btn btn-danger" value="Delete" asp-action="DeleteEmployeeButton" title="Delete" asp-route-id="@individ.ID" onclick="return confirm('Are you sure you wish to delete this ?');">Delete</a>
-                                      </td>
-                                  </tr>
-                              }
+                </form>
+                <br />
+            </div>
 
 
-                          </tbody>
-                      </table>
-                      <br />
-                      <br />
+            <div class="col-6 col-md">
+                <br /><br />
+                <div class="form-group" style="position:relative;">
+                    <a href="#addEmployeeModal" class="btn btn-primary" style="float:right; " data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New Employee</span></a>
+                </div>
 
-                  </div>
-    <!-- Edit Modal HTML -->
+            </div>
+
+
+        </div>
+
+
+
+        @{ if (Model.Count == 0)
+            {
+                <div style="margin-left: auto; margin-right: auto; text-align: center;">
+                    <h1>No  matches found ! </h1>
+                </div>
+
+
+            }
+
+            else
+            {
+
+                <table class="table table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Full Name</th>
+
+                            <th>Birth Day</th>
+                            <th>Qualification</th>
+                            <th>First Day</th>
+                            <th>  </th>
+
+                        </tr>
+                    </thead>
+
+
+
+                    @{int i = 0;
+
+                        foreach (DatabaseClassLibrary.EmployeesDatabase.IEmployeeModel individ in Model)
+                        {
+                            <tr>
+                                <td>
+                                    <span>@(++i)</span>
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(Model => individ.FullName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(Model => individ.BirthDay)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(Model => individ.Qualification)
+                                </td>
+                                <th>
+                                    @Html.DisplayFor(Model => individ.FirstDay)
+                                </th>
+                                <td>
+
+                                    <a asp-action="EditEmployeeButton" title="Edit" asp-route-id="@individ.ID" class="btn btn-primary">Edit </a>
+                                    <a class="btn btn-danger" value="Delete" asp-action="DeleteEmployeeButton" title="Delete" asp-route-id="@individ.ID" onclick="return confirm('Are you sure you wish to delete this ?');">Delete</a>
+                                </td>
+                            </tr>
+                        }
+                    }
+
+
+
+                </table>
+            }
+
+            <div style=" margin-left: auto; margin-right: auto; text-align: center; font-style:italic;">
+
+                <h3 style="color:dimgray"> No more </h3>
+
+            </div>
+
+
+        }
+
+
+
+
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+
+    </div>
+
+    <style>
+        #myBtn {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 30px;
+            z-index: 99;
+            font-size: 18px;
+            border: none;
+            outline: none;
+            background-color:#ffcccc;
+            color: white;
+            cursor: pointer;
+            padding: 15px;
+            border-radius: 4px;
+        }
+
+            #myBtn:hover {
+                background-color: #ff4d4d;
+            }
+    </style>
+
+
+
+    <button onclick="topFunction()" id="myBtn" title="Go to top">Up</button>
+
+    
+
+
+    <script>
+        //Get the button
+        var mybutton = document.getElementById("myBtn");
+
+        // When the user scrolls down 20px from the top of the document, show the button
+        window.onscroll = function () { scrollFunction() };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                mybutton.style.display = "block";
+            } else {
+                mybutton.style.display = "none";
+            }
+        }
+
+        // When the user clicks on the button, scroll to the top of the document
+        function topFunction() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
     <div id="addEmployeeModal" class="modal fade">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -148,8 +224,7 @@
             </div>
         </div>
     </div>
-    <!-- Edit Modal HTML  input name="FullNameEdit" id="FullNameEdit" type="text" class="form-control" required> -->
-    <!-- Delete Modal HTML -->
+
 
 
 </body>
