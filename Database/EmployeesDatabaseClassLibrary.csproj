@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk" ToolsVersion="Current">
+  <PropertyGroup>
+    <OutputType>Library</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <FileUpgradeFlags>40</FileUpgradeFlags>
+    <UpgradeBackupLocation>C:\Users\galbi\OneDrive\Desktop\ASPNET-master\DemoAutoService\Backup\EmployeesDatabaseClassLibrary\</UpgradeBackupLocation>
+    <OldToolsVersion>2.0</OldToolsVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="RecordsDatabase\**" />
+    <EmbeddedResource Remove="RecordsDatabase\**" />
+    <None Remove="RecordsDatabase\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="System.Data.SQLite" Version="1.0.113.1" />
+  </ItemGroup>
+</Project>

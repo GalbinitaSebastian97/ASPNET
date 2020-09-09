@@ -1,27 +1,27 @@
 ﻿@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
-@{
-
-    ViewData["Title"] = "Contact Client";
-}
+@{ ViewData["Title"] = "Contact Client"; }
 <div class="container ">
     <br /><br />
     <div class="row">
         <div class="col-6 col-md">
-            <div class="form-group" style="width:100%;">
-                <h2>Send <b>Message</b></h2>
-            </div>
-            <div class="form-group">
-                <label class="control-label">E-mail</label>
-                <input class="form-control" placeholder="E-mail" required />
-                <span class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label for="e-mail">Add an Overview</label>
-                <textarea class="form-control" name="E-mail" rows="13" placeholder="Overview" required></textarea>
-            </div>
-            <button type="button" class="btn btn-primary btn-lg btn-block">Send</button>
+            <form method="post" asp-controller="ContactClient" asp-action="SendMailToClient">
+                <div class="form-group" style="width:100%;">
+
+                    <h2>Send <b>Message</b></h2>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">E-mail</label>
+                    <input id="MailClient" name="MailCLient" class="form-control" placeholder="E-mail" required />
+                    <span id="MailClient" name="MailClient" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label for="Descriprion">Add an Overview</label>
+                    <textarea id="Description" class="form-control" name="Description" rows="13" placeholder="Overview" required></textarea>
+                </div>
+                <input class="btn btn-primary btn-lg btn-block" value="Send" asp-action="SendMailToClient" type="submit">
+            </form>
         </div>
         <div class="col-6 col-md">
             <h2><b>Email Laws</b> and <b>Regulations</b></h2>

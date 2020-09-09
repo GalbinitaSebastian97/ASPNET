@@ -6,6 +6,7 @@
     <title>@ViewData["Title"] - DemoAutoService</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="https://res.cloudinary.com/mhmd/image/upload/v1557368579/logo_iqjuay.png" />
 
 </head>
 <body>
@@ -23,23 +24,27 @@
 
                 <div id="navbarSupportedContent" class="collapse navbar-collapse">
                     <ul class="navbar-nav ml-auto">
-                        <li class="nav-item active"><a asp-controller="Home" asp-action="Index" class="nav-link">Home <span class="sr-only">(current)</span></a></li>
-                        <li class="nav-item"><a href="#" class="nav-link">Records</a></li>
+                        <li class="nav-item "><a asp-controller="Home" asp-action="Index" class="nav-link">Home <span class="sr-only">(current)</span></a></li>
+                        <li class="nav-item"><a asp-controller="Records" asp-action="Records" class="nav-link">Records</a></li>
                         <li class="nav-item"><a asp-controller="Employees" asp-action="Employees" class="nav-link">Employees</a></li>
-
                         <li class="nav-item"><a asp-controller="ContactClient" asp-action="ContactClient" class="nav-link">Contact Client </a></li>
-                        <li class="nav-item"><a asp-controller="ContactClient" asp-action="ContactClient" class="nav-link">Login </a></li>
+                        <li class="nav-item"><a asp-controller="Login" asp-action="Login" class="nav-link">Logout</a></li>
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
+
+
+   <div class="container">
+    <main role="main" class="pb-3">
+        @RenderBody()
+    </main>
     </div>
-    <footer class="border-top footer bg-dark shadow-sm  py-5">
+
+
+
+    <footer class="footer border-top footer bg-dark shadow-sm  py-5">
         <div class="container">
             <div class="row">
                 <div class="col-12 col-md">
@@ -59,8 +64,8 @@
                     <h5>Our Services</h5>
                     <ul class="list-unstyled text-small">
                         <li><a class="text-muted">Auto repairs & Auto service</a></li>
-                        <li ><a class="text-muted">Auto maintaince</a></li>
-                        <li><a class="text-muted" >F.A.Q</a></li>
+                        <li><a class="text-muted">Auto maintaince</a></li>
+                        <li><a class="text-muted">F.A.Q</a></li>
                     </ul>
                 </div>
                 <div class="col-6 col-md">
@@ -79,7 +84,7 @@
             </div>
         </div>
         <div class="container text-center">
-            <p class="text-muted credit">&copy; 2020 Giniga Gabriel Andrei & Galbinita Sebastian</p>
+            <p class="text-muted credit">&copy; 2020 Galbinita Sebastian</p>
         </div>
     </footer>
 

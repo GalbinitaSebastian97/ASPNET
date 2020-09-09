@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using DemoAutoService.Models;
+using DemoAutoService.Controllers;
 
 namespace DemoAutoService.Controllers
 {
@@ -20,7 +21,9 @@ namespace DemoAutoService.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            if (Startup.isLogged == true)
+                return View();
+            else return RedirectToAction("Login", "Login");
         }
 
         

@@ -13,6 +13,7 @@ namespace DemoAutoService
 {
     public class Startup
     {
+        public static bool isLogged = false;
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;

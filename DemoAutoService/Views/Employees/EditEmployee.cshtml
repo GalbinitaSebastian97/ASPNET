@@ -1,7 +1,7 @@
 ﻿@model DatabaseClassLibrary.EmployeesDatabase.IEmployeeModel
 
 @{
-    ViewData["Title"] = "EditEmployee";
+    ViewData["Title"] = "Edit Employee";
 }
 <div class="container mt-5" >
     <div class="row justify-content-center">
@@ -36,7 +36,7 @@
                     <span asp-validation-for="FirstDay" class="text-danger"></span>
                 </div>
                 <label class="container">
-                    <input type="checkbox" checked="checked">
+                    <input type="checkbox" checked="checked" id="checkbox">
                     <span class="checkmark">I have read and agree to the <a href="#">terms and conditions</a> applicable to this service. I agree with the takeover and procesing of personal information(<a href="##">Personal Data Processing Policy</a>) by DEMOAUTOSERVICE SRL.</span>
                 </label>
                 <br>
